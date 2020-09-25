@@ -11,21 +11,22 @@ class Equipo{
        string nombre_equipo;
        int partidos_ganados;
        int partidos_empatados;
+       int partidos_perdidos;
        int goles_favor;
-       int partidos_contra;
+       int goles_contra;
 public:
        Equipo();
-       Equipo(string,int,int,int,int);
-       void set_nombre_equipo(string);
-       void set_partidos_ganados(int);
-       void set_partidos_empatados(int);
-       void set_goles_favor(int);
-       void set_partidos_contra(int);
+       Equipo(string,int,int,int,int,int);
+       int calcular_partidos_jugados();
+       int calcular_puntos_equipo();
+       int calcular_diferencia_goles();
        string get_nombre_equipo();
        int get_partidos_ganados();
        int get_partidos_empatados();
+       int get_partidos_perdidos();
        int get_goles_favor();
-       int get_partidos_contra();
+       int get_goles_contra();
+       string toString();
        ~Equipo();
 };
 

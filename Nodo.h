@@ -4,11 +4,14 @@
 #include "Equipo.h"
 class Nodo {
     private:
-        Nodo* apuntador_nodo;
+        Nodo* node;
         Equipo* equipo;
     public:
-    Nodo();
-    Nodo(Equipo);
-    ~Nodo();
+        Nodo();
+        Nodo(Equipo*);
+        Nodo* next_node();
+        void set_next_Node(Nodo*);
+        Equipo* get_Equipo();
+        ~Nodo();
 };
 #endif

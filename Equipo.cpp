@@ -4,32 +4,28 @@
 Equipo::Equipo(){
 }
 
-Equipo::Equipo(string _nombre_equipo, int _partidos_ganados, int _partidos_empatados, int _goles_favor, int _partidos_contra){
+Equipo::Equipo(string _nombre_equipo, int _partidos_ganados, int _partidos_empatados, int _partidos_perdidos, int _goles_favor, int _goles_contra){
   nombre_equipo =  _nombre_equipo;
   partidos_ganados =  _partidos_ganados;
   partidos_empatados =  _partidos_empatados;
+  partidos_perdidos =  _partidos_perdidos;
   goles_favor =  _goles_favor;
-  partidos_contra =  _partidos_contra;
+  goles_contra =  _goles_contra;
 }
 
-void Equipo::set_nombre_equipo(string _nombre_equipo){
-     nombre_equipo = _nombre_equipo;
+//Calculo de Partidos Jugados
+int Equipo::calcular_partidos_jugados(){
+     return partidos_ganados + partidos_empatados + partidos_perdidos;
 }
-
-void Equipo::set_partidos_ganados(int _partidos_ganados){
-     partidos_ganados = _partidos_ganados;
+//Calculo de puntos 
+int Equipo::calcular_puntos_equipo(){
+     //Calcular puntos 
+     int resultado = (partidos_ganados * 3) + partidos_empatados;
+     return resultado;
 }
-
-void Equipo::set_partidos_empatados(int _partidos_empatados){
-     partidos_empatados = _partidos_empatados;
-}
-
-void Equipo::set_goles_favor(int _goles_favor){
-     goles_favor = _goles_favor;
-}
-
-void Equipo::set_partidos_contra(int _partidos_contra){
-     partidos_contra = _partidos_contra;
+//Calculo de Diferencia de Goles
+int Equipo::calcular_diferencia_goles(){
+     
 }
 
 string Equipo::get_nombre_equipo(){
@@ -44,12 +40,16 @@ int Equipo::get_partidos_empatados(){
      return partidos_empatados;
 }
 
+int Equipo::get_partidos_perdidos(){
+     return partidos_perdidos;
+}
+
 int Equipo::get_goles_favor(){
      return goles_favor;
 }
 
-int Equipo::get_partidos_contra(){
-     return partidos_contra;
+int Equipo::get_goles_contra(){
+     return goles_contra;
 }
 
 Equipo::~Equipo(){
