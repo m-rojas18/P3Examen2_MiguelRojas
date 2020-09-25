@@ -12,6 +12,7 @@ class Nodo {
         Nodo* next_node();
         void set_next_Node(Nodo*);
         Equipo* get_Equipo();
+        void set_Equipo(Equipo*);
         ~Nodo();
 };
 #endif
