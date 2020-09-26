@@ -31,7 +31,8 @@ int main(int argc, char *argv[]){
 
     int contador = 0;
     Nodo* topepila = nullptr;// nodo topepila
-
+    
+    //Separar atributos de line y creacion de objetos
     while(contador < lineas_datos.size()){
         string datos_equipo[6], cadena_temporal;
         stringstream separacion_datos(lineas_datos.at(contador));
@@ -50,15 +51,16 @@ int main(int argc, char *argv[]){
         topepila = nuevo_nodo;
         contador++;
     }
-    //Moverse en lista
+    
     Nodo* nodo_actual = new Nodo();
     nodo_actual = topepila;
     ordenamiento(nodo_actual);
 
-    cout << "               PJ  G   E   P   GA  GC  DG  PTS" << endl;
+    cout << "\n               PJ  G   E   P   GA  GC  DG  PTS" << endl;
     int contador_tabla = 1;
+    //Moverse en lista
     while(nodo_actual != NULL){
-
+        /Impresion Deseada de la tabla
         cout << contador_tabla << " " <<left<< setw(13) << nodo_actual->get_Equipo()->get_nombre_equipo() << setw(3) << nodo_actual->get_Equipo()->get_partidos_jugados() << " " 
              << setw(3) << nodo_actual->get_Equipo()->get_partidos_ganados() << " " << setw(3) << nodo_actual->get_Equipo()->get_partidos_empatados() 
              <<  " " << setw(3) << nodo_actual->get_Equipo()->get_partidos_perdidos() << " " << setw(3) << nodo_actual->get_Equipo()->get_goles_favor() 
@@ -67,30 +69,36 @@ int main(int argc, char *argv[]){
         nodo_actual = nodo_actual->next_node();
         contador_tabla++;
     }
+    cout << endl;
     archivo_texto.close();
     return 0;
 }
 
 void ordenamiento(Nodo* topepila){
 
-    Nodo* temporal = topepila;
-    while(temporal){
-        Nodo* minimo = temporal;
-        Nodo* recorrer = temporal->next_node();
-        while(recorrer){
-            if(minimo->get_Equipo()->get_puntos_equipo() < recorrer->get_Equipo()->get_puntos_equipo()){
-                minimo = recorrer;
-            } else if(minimo->get_Equipo()->get_puntos_equipo() == recorrer->get_Equipo()->get_puntos_equipo()){
-                if(minimo->get_Equipo()->get_diferencia_goles() < recorrer->get_Equipo()->get_diferencia_goles()){
-                    minimo = recorrer;
+    Nodo* nodo_temporal = topepila;
+    //Recorrer lista
+    while(nodo_temporal != NULL){
+        Nodo* minimo = nodo_temporal;
+        Nodo* sublista_recorrer = nodo_temporal->next_node();
+        //Recorrer sublista (recorrer)
+        while(sublista_recorrer != NULL){
+            if(minimo->get_Equipo()->get_puntos_equipo() < sublista_recorrer->get_Equipo()->get_puntos_equipo()){
+                //Encuentra un valor menor al minimo
+                minimo = sublista_recorrer;
+            } else if(minimo->get_Equipo()->get_puntos_equipo() == sublista_recorrer->get_Equipo()->get_puntos_equipo()){
+                if(minimo->get_Equipo()->get_diferencia_goles() < sublista_recorrer->get_Equipo()->get_diferencia_goles()){
+                    //Valiacion para cuando puntaje es igual y evaluar por diferencia de goles
+                    minimo = sublista_recorrer;
+                   
                 }
             }
-            recorrer = recorrer->next_node();
+            sublista_recorrer = sublista_recorrer->next_node();
         }
-
-        Equipo* equipo_temporal = temporal->get_Equipo();
-        temporal->set_Equipo(minimo->get_Equipo());
+        //Cambio de Datos en la lista enlazada
+        Equipo* equipo_temporal = nodo_temporal->get_Equipo();
+        nodo_temporal->set_Equipo(minimo->get_Equipo());
         minimo->set_Equipo(equipo_temporal);
-        temporal = temporal->next_node();
+        nodo_temporal = nodo_temporal->next_node();
     }
 }

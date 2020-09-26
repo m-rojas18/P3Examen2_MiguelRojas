@@ -11,25 +11,20 @@ Equipo::Equipo(string _nombre_equipo, int _partidos_ganados, int _partidos_empat
   partidos_perdidos =  _partidos_perdidos;
   goles_favor =  _goles_favor;
   goles_contra =  _goles_contra;
-  puntos = (partidos_ganados * 3) + partidos_empatados;
 }
 
 //Calculo de Partidos Jugados
 int Equipo::get_partidos_jugados(){
      return partidos_ganados + partidos_empatados + partidos_perdidos;
 }
-//Calculo de puntos 
+//Calculo de puntos del Equipo
 int Equipo::get_puntos_equipo(){
-     return puntos;
+     return (partidos_ganados * 3) + partidos_empatados;
 }
 //Calculo de Diferencia de Goles
 int Equipo::get_diferencia_goles(){
      int resultado = goles_favor - goles_contra;
      return resultado;
-}
-
-void Equipo:: set_puntos(int puntos){
-     this->puntos = puntos;
 }
 
 string Equipo::get_nombre_equipo(){
@@ -56,5 +51,4 @@ int Equipo::get_goles_contra(){
      return goles_contra;
 }
 
-Equipo::~Equipo(){
-}
+Equipo::~Equipo(){}
