@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     int contador = 0;
     Nodo* topepila = nullptr;// nodo topepila
     
-    //Separar atributos de line y creacion de objetos
+    //Separar atributos de lineas y creacion de objetos
     while(contador < lineas_datos.size()){
         string datos_equipo[6], cadena_temporal;
         stringstream separacion_datos(lineas_datos.at(contador));
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]){
     int contador_tabla = 1;
     //Moverse en lista
     while(nodo_actual != NULL){
-        /Impresion Deseada de la tabla
+        //Impresion Deseada de la tabla
         cout << contador_tabla << " " <<left<< setw(13) << nodo_actual->get_Equipo()->get_nombre_equipo() << setw(3) << nodo_actual->get_Equipo()->get_partidos_jugados() << " " 
              << setw(3) << nodo_actual->get_Equipo()->get_partidos_ganados() << " " << setw(3) << nodo_actual->get_Equipo()->get_partidos_empatados() 
              <<  " " << setw(3) << nodo_actual->get_Equipo()->get_partidos_perdidos() << " " << setw(3) << nodo_actual->get_Equipo()->get_goles_favor() 
